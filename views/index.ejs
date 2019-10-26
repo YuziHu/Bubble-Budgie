@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  <body>
+    <p>Welcome to <%= title %></p>
+  Please select a user or create one.
+    <select onchange="location = '/bubble/'+this.value;">
+      <option>Select Account</option>
+      <%
+          for (let bubble in allBubbles) {
+            %><option value="<%=bubble%>"><%=allBubbles[bubble].name%></option><%
+          }
+
+       %>
+    </select>
+  </body>
+</html>
