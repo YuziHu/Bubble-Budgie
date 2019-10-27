@@ -46,13 +46,21 @@ a {
 }
 
 .costYearly, .costMonthly, .costWeekly{
-  background-color: #FFEE8C;color:black;
+  background-color: #FFEE8C;
+  color:black;
+  margin-left: 800px;
 }
 
 .pool{
-    background-color:lightblue;color:black;
+    background-color:lightblue;
+    color:black;
+    margin-left: 120px;
+    margin-bottom: 80px;
+    margin-top: 80px;
 }
 
 .expense{
-    border-color: #B8F2FF; color:black;
+    border-color: #B8F2FF; 
+    color:black;
+    margin-left: 300px;
 }
