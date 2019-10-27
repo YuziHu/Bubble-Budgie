@@ -21,8 +21,9 @@
   </script>
   <body>
   <!-- Button to Open the Modal -->
-  <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="header">
+      <a href="#default" class="logo">Bubble Budgie</a>
+      <div class="header-right">
           <ul class="navbar-nav">
               <li class="nav-item">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newIncomeModal">
@@ -40,7 +41,7 @@
                     </button>
               </li>
             </ul>
-      </nav>
+      </div>
     </div>
   <script>
       let selectedBubble;
@@ -56,34 +57,34 @@
           </div>
       </div>
   </div>
-  <canvas width="2000" height="2000"></canvas>
+  <canvas width="1500" height="1200"></canvas>
   <script>
     let canvas = document.querySelector("canvas")
     let cx = canvas.getContext('2d')
     cx.beginPath();
     cx.lineWidth = 3
-    cx.moveTo(200, 400);
-    cx.quadraticCurveTo(600, 200, 600, 650);
+    cx.moveTo(200, 300);
+    cx.quadraticCurveTo(600, 200, 750, 400);
     cx.stroke();
     cx.closePath();
     //
     cx.beginPath();
-    cx.moveTo(200, 800);
-    cx.quadraticCurveTo(100, 600, 800, 1000);
+    cx.moveTo(200, 300);
+    cx.quadraticCurveTo(80, 500, 800, 500);
     cx.stroke();
     cx.closePath();
     //
     cx.beginPath();
-    cx.moveTo(900, 1000);
-    cx.quadraticCurveTo(900, 1200, 1400, 1100);
+    cx.moveTo(200, 450);
+    cx.quadraticCurveTo(400, 1000, 800, 700);
     cx.stroke();
     cx.closePath();
     //
-    cx.beginPath();
-    cx.moveTo(900, 1000);
-    cx.quadraticCurveTo(900, 1200, 1400, 500);
-    cx.stroke();
-    cx.closePath();
+    // cx.beginPath();
+    // cx.moveTo(900, 1000);
+    // cx.quadraticCurveTo(900, 1200, 1400, 380);
+    // cx.stroke();
+    // cx.closePath();
     
   </script>
   <div id="canvas">
@@ -101,13 +102,36 @@
                    width:<%=user.bubbles[bubble].pct*10%>px;height:<%=user.bubbles[bubble].pct*10%>px; margin-left:<%=user.bubbles[bubble].depth*100/user.bubbles[bubble].pct%>px" id="<%=bubble%>">
           <div>
               <div>
-                  <h3><%=user.bubbles[bubble].label%></h3>
+                  <h3 class='label'><%=user.bubbles[bubble].label%></h3>
               </div>
               <div>
                   <h3 style="text-align: center"><%=user.bubbles[bubble].amt%></h3>
               </div>
           </div>
       </div>
+
+      <% if(user.bubbles[bubble].label==='Saving'){ %>
+        <div class="col-lg-4 service_col magic_fade_in">
+						<div class="w-25 service d-flex flex-column align-items-center justify-content-start text-center trans_200 border bg-light float-right">
+							<div class="service_title"><h3>Suggestion</h3></div>
+							<div class="service_text">
+                <p>You have enough savings to make investment.</p>
+							</div>
+						</div>
+					</div>
+      <% } %>
+
+      <% if(user.bubbles[bubble].label==='utilities'){ %>
+        <div class="float-right" style="position: absolute; right: 200px; top: 1100px; width: 50px">
+						<div class="justify-content-start text-center trans_200 border bg-light utilitySum">
+							<div class="service_title"><h3>Summary</h3></div>
+							<div class="service_text">
+                <p>Your utilities are high than average in your neighborhood.</p>
+							</div>
+						</div>
+					</div>
+      <% } %>
+      
 
       <%
             }
@@ -116,6 +140,14 @@
         }
     %>
   </div>
+  <div class="float-right">
+      <div class="justify-content-start text-center trans_200 border bg-light">
+        <div class="service_title"><h3>Analytics</h3></div>
+        <div class="service_text">
+          <p>Based on your goals, current savings and expenses, we recommend you put at least $1000 in your savings account and $500 to your investments.</p>
+        </div>
+      </div>
+    </div>
   <!-- The Modal -->
   <div class="modal" id="newIncomeModal">
     <div class="modal-dialog">
@@ -148,8 +180,24 @@
       </div>
     </div>
   </div>
+  <footer class="footer magic_fade_in">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 footer_col magic_fade_in">
+            <div class="footer_about">
+              <div class="footer_logo"> JACS<span>Budgeting</span></div>
+              <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  </div>		
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- The Modal -->
+  
     <div class="modal" id="newPoolModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -231,7 +279,7 @@
         label: $('#incomeLabelInput').val(),
         amt: $('#incomeAmtInput').val(),
         type: $('#incomeTypeInput').val(),
-        depth: 1
+        depth: 0
       })
       $('#incomeLabelInput').val('');
       $('#incomeAmtInput').val('');

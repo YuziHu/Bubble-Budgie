@@ -66,29 +66,29 @@ reqOptions.forEach((option, idx) => {
 
 // var request = require("request");
 
-// var options = { method: 'GET',
-//   url: 'http://ncrqe-qe.apigee.net/digitalbanking/db-transactions/v1/transactions',
-//   qs: 
-//    { accountId: 'rf5ao6Qclwsth9OfOvUb-EeV1m2BfmTzUEALGLQ3ehU',
-//      hostUserId: 'HACKATHONUSER086' },
-//   headers: 
-//    { 'cache-control': 'no-cache',
-//      Connection: 'keep-alive',
-//      'Accept-Encoding': 'gzip, deflate',
-//      Host: 'ncrqe-qe.apigee.net',
-//      'Postman-Token': '180c6447-6e59-4720-acd6-5b0656abed8a,962aa7d6-3fc9-4361-a3e2-b1c93bb63319',
-//      'Cache-Control': 'no-cache',
-//      'User-Agent': 'PostmanRuntime/7.18.0',
-//      Accept: 'application/json',
-//      transactionId: 'fdd1542a-bcfd-439b-a6a1-5a064023b0ce',
-//      Authorization: 'Bearer u3We4JXZAWN0OFKNkK2mqBooiMnt' } };
+var options = { method: 'GET',
+  url: 'http://ncrqe-qe.apigee.net/digitalbanking/db-transactions/v1/transactions',
+  qs: 
+   { accountId: 'rf5ao6Qclwsth9OfOvUb-EeV1m2BfmTzUEALGLQ3ehU',
+     hostUserId: 'HACKATHONUSER086' },
+  headers: 
+   { 'cache-control': 'no-cache',
+     Connection: 'keep-alive',
+     'Accept-Encoding': 'gzip, deflate',
+     Host: 'ncrqe-qe.apigee.net',
+     'Postman-Token': '180c6447-6e59-4720-acd6-5b0656abed8a,962aa7d6-3fc9-4361-a3e2-b1c93bb63319',
+     'Cache-Control': 'no-cache',
+     'User-Agent': 'PostmanRuntime/7.18.0',
+     Accept: 'application/json',
+     transactionId: 'fdd1542a-bcfd-439b-a6a1-5a064023b0ce',
+     Authorization: 'Bearer u3We4JXZAWN0OFKNkK2mqBooiMnt' } };
 
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
 
-//   console.log(typeof(body));
-//   console.log(body);
-// });
+  console.log(typeof(body));
+  // console.log(JSON.parse(body));
+});
 
 
 
@@ -167,7 +167,6 @@ function store(idx, accounts){
     name: userId
   })
   accounts.forEach(ac => {
-    console.log(ac.currentBalance)
     userDB.child('bubbles').push({
       label: ac.category,
       amt: ac.currentBalance.amount,
