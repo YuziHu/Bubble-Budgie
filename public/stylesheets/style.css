@@ -6,9 +6,53 @@ body {
 a {
   color: #00B7FF;
 }
-
+#megaBubble{
+    color:black;
+    border-radius:50%;
+    width:500px;
+    height:500px;
+    position: absolute;
+    left:-100px;
+    top:40%;
+    background-color:
+            #8BFFD9;
+}
+#megaLabel{
+    padding-top:150px;
+    padding-left:80px;
+    font-size: 3vh;
+    text-align: center;
+}
+#megaAmt{
+    padding-top:50px;
+    font-size: 3vh;
+}
 .bubble{
-  background-color:green;
-  width:20px;
-  height: 20px;
+    margin:50px;
+    position:absolute;
+  width:150px;
+  height: 150px;
+  border-radius: 50%;
+  display:flex;justify-content:center;align-items:center;
+    transition-duration: 0.5s;
+
+}
+.bubble:hover{
+  cursor: pointer;
+}
+
+.salaryYearly, .salaryMonthly, .salaryWeekly{
+  background-color: #8BFFD9;color:black;
+}
+
+.costYearly, .costMonthly, .costWeekly{
+  background-color: #FFEE8C;color:black;
+}
+
+.pool{
+    background-color:lightblue;color:black;
+}
+
+.expense{
+    border-color: #B8F2FF; color:black;
 }

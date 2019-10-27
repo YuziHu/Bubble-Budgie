@@ -68,15 +68,22 @@ io.on('connection', function(socket) {
     let userRef = firebase.database().ref('users').child(bubbleInfo.ownerID.toString());
     userRef.once("value").then(userValue=>{
       let newBubbleID = Math.floor(Math.random()*99999)+10;
-      userRef.child('bubbles/'+newBubbleID).set({
-        label: bubbleInfo.label,
-        type: bubbleInfo.type,
-        amt: bubbleInfo.amt
-      }).then(result=>{
-        io.emit("successfulAddBubble", {
-          bubbleInfo
-        });
+      if(bubbleInfo.label.length>1&&bubbleInfo.type.length>1&&bubbleInfo.amt>0) {
+        userRef = userRef.child('bubbles');
+        userRef.child(newBubbleID).set({
+          label: bubbleInfo.label,
+          type: bubbleInfo.type,
+          amt: bubbleInfo.amt
+        }).then(result=>{
+          io.emit("newBubbleAdded", {
+            ownerID : bubbleInfo.ownerID,
+            bubbleInfo: bubbleInfo
+          });
       })
+      }
+
     });
   });
 });
+
+//write some more pseudocode or something
