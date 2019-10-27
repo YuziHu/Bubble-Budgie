@@ -9,8 +9,8 @@ a {
 #megaBubble{
     color:black;
     border-radius:50%;
-    width:500px;
-    height:500px;
+    width:600px;
+    height:600px;
     position: absolute;
     left:-100px;
     top:40%;

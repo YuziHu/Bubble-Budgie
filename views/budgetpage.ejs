@@ -49,11 +49,11 @@
             if(i===1){
                 selectedBubble=user.bubbles[bubble];
             }
-            if(i<5&&i>1){
+            if(i<7&&i>1){
     %>
       <div class="bubble <%=user.bubbles[bubble].type%>"
-           style="left:600px; top:<%=i*300%>px;
-                   width:<%=user.bubbles[bubble].pct*5%>px;height:<%=user.bubbles[bubble].pct*5%>px;" id="<%=bubble%>">
+           style="left:600px; top:<%=i*200%>px;
+                   width:<%=user.bubbles[bubble].pct*10%>px;height:<%=user.bubbles[bubble].pct*10%>px;" id="<%=bubble%>">
           <div>
               <div>
                   <h3><%=user.bubbles[bubble].label%></h3>
